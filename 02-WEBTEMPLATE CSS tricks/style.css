@@ -30,6 +30,17 @@
     border:1px solid white;
 }
 
+.halfbox{
+    grid-template-columns: 1fr 1fr;
+}
+
+#rightimage{
+    width: 100%;
+    height: 100%;
+    background-image: url(./assets/4e34fe147eb08183f1dfb9576697b7c0.webp);
+    background-size: cover;
+}
+
 #imagebox{
     background-image: url();
     background-size: cover;
@@ -45,7 +56,14 @@
 }
 #page3{
     background-color: green;
+    grid-template-columns: 4fr 2fr 1fr;
 }
+
+#page3 div{
+    width: 100%;
+    height: 100%;
+}
+
 #page4{
     background-color: red;
 }
