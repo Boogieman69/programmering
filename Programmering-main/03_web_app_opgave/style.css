@@ -64,14 +64,6 @@ header#leftmenu{
 
 #page1{
     background-color: lightskyblue;
-    grid-template-columns: 1fr 3fr;
-}
-
-page .left{
-    background-color: whitesmoke;
-    width: 100%;
-    height: 100%;
-    
 }
 
 #page2{
@@ -88,4 +80,5 @@ page .left{
 h1{
     font-family: Raleway;
     color:hotpink;
+    height: 80vh;
 }
