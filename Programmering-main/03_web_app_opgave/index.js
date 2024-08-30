@@ -1,4 +1,4 @@
-let currentPage = 1
+let currentPage = 2
 
 let pages //array med alle elementer med class = page 
 let menuItems //array med alle menupunkterne  
@@ -23,6 +23,10 @@ function setup(){
     }
         
     shiftPage(currentPage)
+    //vent to sekunder og sæt så klassen "hidden" på headeren - så menuen bliver væk
+    setTimeout(function(){
+        select('header').addClass('hidden')
+    }, 10000)
 }
 
 function shiftPage(num){
