@@ -79,7 +79,7 @@ header.hidden:hover .menuitem{
 
 
 #page1{
-    background-color: lightskyblue;
+    background-color: red;
     grid-template-columns: 1fr 3fr;
 }
 
@@ -90,20 +90,31 @@ header.hidden:hover .menuitem{
     display:grid;
     place-items:center;
 }
+#imagebox{
+    background-image: url(assets/PC_OP_XRAMS_LP_animeKV.jpg);
+    background-size: cover;
+    background-position: center center;
+}
 
+.box{
+    width:80%;
+    height:80%;
+    display:grid;
+    place-items:center;
+    border:1px solid white;
+    position:relative;
+}
 #page2{
-    background-color: lightgreen;
-    grid-template-columns: 3fr 7fr;
+    background-color: red;
+    grid-template-columns: 1fr 3fr;
 }
 
 #page2 .left{
+    background-color:whitesmoke;
     width:100%;
     height:100%;
     display:grid;
     place-items:center;
-    padding:2rem;
-    background-color:whitesmoke;
-    font-size:1.5rem;
 }
 
 #page2 .right{
@@ -114,18 +125,45 @@ header.hidden:hover .menuitem{
 }
 
 #image1{
-    background-image: url(./assets/matt-hardy-6ArTTluciuA-unsplash.jpg);
+    background-image: url(./assets/PC_OP_XRAMS_LP_laKV.jpg);
     background-size: cover;
+    background-position: center center;
 }
 
 #page3{
-    background-color: lightcyan;
+    background-color: lightsalmon;
+    grid-template-columns: 1fr 3fr;
 }
 
+#page3 .left{
+    background-color:whitesmoke;
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items:center;
+}
+#image3{
+    background-image: url(assets/PC_OP_XRAMS_LP_comicKV.jpg);
+    background-size: cover;
+    background-position: center center;
+}
 #page4{
     background-color: lightsalmon;
+    grid-template-columns: 1fr 3fr;
 }
 
+#page4 .left{
+    background-color:whitesmoke;
+    width:100%;
+    height:100%;
+    display:grid;
+    place-items:center;
+}
+#image4{
+    background-image: url(assets/PC_GAME_KV.jpg);
+    background-size: cover;
+    background-position: center center;
+}
 h1{
     font-family: Raleway;
     color:hotpink;
