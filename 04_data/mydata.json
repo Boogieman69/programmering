@@ -1,0 +1,7 @@
+{
+    "Name" : "Luffy",
+    "Description" : "dette er data fra den lokale fil mydata.json. de ligger i javascript object notation (JSON), og er hentet med funktionen fetch.",
+    "formerHaircolors": ["purple", "black", "orange"], 
+    "happy" : true,
+    "image" : "./assets/luffy.png"
+}
