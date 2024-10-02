@@ -40,6 +40,7 @@ function pageOne(){
 }
 
 function pageTwo(){
+    console.log('nu skal side 2 komme frem')
 
     //Først beder vi fetch hente den lokale fil
     fetch('./mydata.json')
@@ -67,16 +68,21 @@ function pageTwo(){
             //så laver vi et p-element 
             let newP = createElement('p', data.Description)
             //nu laver vi en underoverskrift
-            let hairHeader = createElement('h3', 'tidligere hårfarver')
+            let hairHeader = createElement('h3', 'Tidligere hårfarver')
             //nu skal jeg løbe et array igennem fra json
             let hairlist = createElement('ul')
-            for(color of data.formerHairColors){
+            for(color of data.FormerHaircolors){
+                let listItem = createElement('li', color)
                 hairlist.child(listItem)
             }
+            let listItem = createElement('li', data.listItem)
 
             //til sidst lægger vi de nye elementer ind i den div vi opretter
-            newDiv.child(newP)
             newDiv.child(newHeader)
+            newDiv.child(newP)
+            newDiv.child(hairHeader)
+            newDiv.child(listItem)
+
             //tag fat i html element med id = localdata
             //tøm det
             select('#localData').child(newDiv)
