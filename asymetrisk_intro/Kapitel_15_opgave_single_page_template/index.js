@@ -1,15 +1,23 @@
 function setup(){
-    hentTopPosts("music");
+    //hentTopPosts("music");
     // Kalder funktionen 'hentTopPosts' med argumentet "cats" ved programmets start.
+    select('#searchButton').mousePressed( function(){
+      subreddit = select('#searchInput').value()
+        hentTopPosts( subreddit )
+    })
 }
 
 
 //async betyder at funktionen kan vente på at ting er færdige - fx at hente data
 async function hentTopPosts(subreddit) {
 
+    //lad os først tømme HTML DIV'en
+    select('#page1 .right').html('')
+
     //først sætter vi et response objekt lig metoden fetch som henter data
     //det tager noget tid, derfor keywordet "await"
-   const response = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?limit=8`)
+   try {
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}/top.json?limit=8`)
     //når vi så får objekt tilbage, og HVIS response.ok = true
     //så kan vi bruge metoden .json() til at læse en readable stream
     //den operation tager OGSÅ noget tid - derfor keywordet "await" IGEN    
@@ -29,7 +37,11 @@ async function hentTopPosts(subreddit) {
             createPost(p.data)
         }
 
-} 
+} catch ( e ){
+    console.log('det skete en fejl', e)
+    select('#page1 .right').html('der findes ikke en subreddit med det')
+    }
+}
 
 function createPost(post){
     //vi laver først en reference til det HTML element vi vil sætte poster ind i
@@ -44,5 +56,9 @@ function createPost(post){
     let link = createA(post.url, 'læs mere...')
     container.child(link)
     //og ligger container ind i HTML elementen
+    let thumbnail = createImg(post.thumbnail,'billede af post')
+    //vi laver thumbnail til posten
+    container.style('background-image', `url(${post.thumbnail})`)
+    //lægger containen ind html elemnetet 
     rightDiv.child(container)
 }
