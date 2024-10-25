@@ -19,7 +19,7 @@ header{
     position:fixed;
     height: 80vh;
     width:100vw;
-    top:20vh;
+    top:19vh;
     overflow:hidden;
     display:grid;
     grid-template-columns: 1fr 1fr;
