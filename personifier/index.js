@@ -1,5 +1,5 @@
 class Person {
-    // Konstruktor til at initialisere et Person-objekt
+    // definere information om personerne 
     constructor(name, age, city) {
       this.name = name;
       this.age = age;
@@ -7,13 +7,13 @@ class Person {
       this.createCard(); // Opretter automatisk en visuel repræsentation
     }
   
-    // Metode til at oprette et kort-lignende billede af personen
+    // skaber kortene så man kan se det visuelt i koden
     createCard() {
-      // Definer en liste af baggrundsfarver
-      const colors = ["#f9c74f", "#90be6d", "#f94144", "#577590", "#43aa8b"];
-      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      // liste af farver til profilernes bokse 
+      const profileColors = ["#FF6347", "#FFD700", "#90EE90", "#ADD8E6", "#FF69B4", "#8A2BE2", "#20B2AA"];
+      const selectedColor = profileColors[this.age % profileColors.length]; // Bruger alder til at vælge en farve
   
-      // Opret et div-element til at holde personens detaljer
+      // Opret et div-element som kan holde personernes info
       this.cardDiv = createDiv();
       this.cardDiv.style(`
         border: 2px solid #333;
@@ -23,12 +23,12 @@ class Person {
         width: 200px;
         text-align: center;
         font-family: Arial, sans-serif;
-        background-color: ${randomColor};
+        background-color: ${selectedColor};
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         color: white;
       `);
   
-      // Beregn pensionens resterende år og vis det på kortet
+      // Beregn hvornår personerne bliver pensioneret 
       const yearsToRetirement = this.calculateYearsToRetirement();
   
       // Tilføj indhold til kortet
@@ -40,19 +40,48 @@ class Person {
       `);
   
       // Tilføj kortet til containeren
-      select('#container').child(this.cardDiv);
+      this.setContainerColor(); // Farve til containeren
     }
   
-    // Metode til at beregne hvor mange år der er til pension
+    //hvor mange år der er til pension
     calculateYearsToRetirement() {
       const retirementAge = 67;
       const yearsToRetirement = retirementAge - this.age;
       return yearsToRetirement > 0 ? yearsToRetirement : 0; // Hvis personen allerede er 67 eller ældre, returneres 0
     }
+  
+    // ændre containerens baggrundsfarve
+    setContainerColor() {
+      // Liste af baggrundsfarver for containerne (de omkransende bokse)
+      const containerColors = ["#f1faee", "#a8dadc", "#457b9d", "#1d3557", "#e63946"];
+      const selectedContainerColor = containerColors[this.age % containerColors.length];
+  
+      // Opretter containeren 
+      this.containerDiv = createDiv();
+      this.containerDiv.style(`
+        display: inline-block;
+        padding: 10px;
+        background-color: ${selectedContainerColor};
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+      `);
+  
+      // ligger kortet til containeren
+      this.containerDiv.child(this.cardDiv);
+  
+      // Find containeren i DOM'en og gør det som et barn
+      select('#container').child(this.containerDiv);
+    }
   }
   
   function setup() {
     noCanvas(); // Vi behøver ikke et canvas for dette eksempel
+  
+    // Opret en container til at holde personkortene
+    let container = createDiv();
+    container.id('container');
+    document.body.appendChild(container.elt); // Tilføjer containeren til bodyen
   
     // Opret flere Person-objekter
     let persons = [
